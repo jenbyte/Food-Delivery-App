@@ -1,5 +1,7 @@
 // Dummy Data
 
+import { Text } from 'react-native';
+
 export const categories = [
   {
     id: 1,
@@ -271,7 +273,7 @@ export const featured = {
             rating: 4.9,
             categories: [9, 10],
             priceRating: affordable,
-            photo: require('../assets/images/kek-lapis.jpeg'),// images.kek_lapis_shop,
+            photo: require('../assets/images/kek-lapis.jpeg'),
             duration: '35 - 40 min',
             location: {
             latitude: 1.5573478487252896,
@@ -309,4 +311,12 @@ export const featured = {
             ],
         },
         ]
+}
+
+export const categoriesMap = (categoryId) => {
+    return categories.map((category, index) => {
+        if (category.id === categoryId) {
+            return category.name;
+        }
+    })
 }
