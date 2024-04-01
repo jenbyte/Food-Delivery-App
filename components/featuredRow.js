@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native'
 import React from 'react'
 import { themeColors } from '../theme'
 import RestaurantCard from './restaurantCard'
-import { featured } from '../constants'
 
 export default function FeaturedRow({title, description, restaurants}) {
   return (
@@ -19,11 +18,11 @@ export default function FeaturedRow({title, description, restaurants}) {
         <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{paddingHorizontal: 15}}
+            contentContainerStyle={{ paddingHorizontal: 15 }}
             className="overflow-visible py-5"
         >
             {
-                featured.restaurants.map((restaurant, index) => {
+                restaurants.map((restaurant, index) => {
                     return (
                         <RestaurantCard
                             item={restaurant}

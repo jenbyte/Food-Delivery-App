@@ -3,12 +3,17 @@ import React from 'react'
 import { categoriesMap } from '../constants'
 import * as Icon from "react-native-feather";
 import { themeColors } from '../theme';
+import { useNavigation } from '@react-navigation/native';
 
 export default function RestaurantCard({item}) {
+    const navigation = useNavigation()
+
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback
+        onPress={() => navigation.navigate('Restaurant', {...item})}
+    >
         <View style={{
-                shadowColor: themeColors.bgColor(0.5),
+                shadowColor: '#000', //themeColors.bgColor(0.5)
                 shadowRadius: 7
             }} 
             className="mr-6 bg-white rounded-3xl shadow-lg"
@@ -17,7 +22,7 @@ export default function RestaurantCard({item}) {
             <View className="px-3 pb-4 space-y-2">
                 <Text className="text-lg font-bold pt-2">{item.name}</Text>
                 <View className="flex-row items-center space-x-1">
-                    <Image className="h-3 w-3" source={require('../assets/images/star.png')} />
+                    <Image className="h-4 w-4" source={require('../assets/images/star.png')} />
                     <Text className="text-xs">
                         <Text className="text-green-700">{item.rating}</Text>
                         <Text className="text-gray-700">

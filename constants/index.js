@@ -75,6 +75,8 @@ export const featured = {
             priceRating: affordable,
             photo: require('../assets/images/burger-restaurant-2.jpg'),
             duration: '30 - 45 min',
+            description: 'Hot and juicy burgers',
+            address: '123 Wall St',
             location: {
             latitude: 1.5347282806345879,
             longitude: 110.35632207358996,
@@ -118,6 +120,8 @@ export const featured = {
             priceRating: expensive,
             photo: require('../assets/images/pizza-restaurant.jpg'),// images.pizza_restaurant,
             duration: '15 - 20 min',
+            description: 'Hot and spicy pizza',
+            address: '123 Wall St',
             location: {
             latitude: 1.556306570595712,
             longitude: 110.35504616746915,
@@ -170,6 +174,8 @@ export const featured = {
             priceRating: expensive,
             photo: require('../assets/images/hot-dog-restaurant.jpg'),
             duration: '20 - 25 min',
+            description: 'Hot and juicy hotdogs',
+            address: '123 Wall St',
             location: {
             latitude: 1.5238753474714375,
             longitude: 110.34261833833622,
@@ -197,6 +203,8 @@ export const featured = {
             priceRating: expensive,
             photo: require('../assets/images/japanese-restaurant.jpg'),
             duration: '10 - 15 min',
+            description: 'Savory and delicious sushi',
+            address: '123 Wall St',
             location: {
             latitude: 1.5578068150528928,
             longitude: 110.35482523764315,
@@ -224,6 +232,8 @@ export const featured = {
             priceRating: affordable,
             photo: require('../assets/images/noodle-shop.jpg'),
             duration: '15 - 20 min',
+            description: 'Hot and delicious noodles',
+            address: '123 Wall St',
             location: {
             latitude: 1.558050496260768,
             longitude: 110.34743759630511,
@@ -275,6 +285,8 @@ export const featured = {
             priceRating: affordable,
             photo: require('../assets/images/kek-lapis.jpeg'),
             duration: '35 - 40 min',
+            description: 'Sweet and mouth-watering sweets',
+            address: '123 Wall St',
             location: {
             latitude: 1.5573478487252896,
             longitude: 110.35568783282145,
