@@ -69,7 +69,7 @@ export const featured = {
     restaurants: [
         {
             id: 1,
-            name: 'Burger',
+            name: 'Burger Queen',
             rating: 4.8,
             categories: [5, 7],
             priceRating: affordable,
@@ -114,7 +114,7 @@ export const featured = {
         },
         {
             id: 2,
-            name: 'Pizza',
+            name: 'Pizza Den',
             rating: 4.8,
             categories: [2, 4, 6],
             priceRating: expensive,
@@ -168,7 +168,7 @@ export const featured = {
         },
         {
             id: 3,
-            name: 'Hotdogs',
+            name: 'Kappadogs',
             rating: 4.8,
             categories: [3],
             priceRating: expensive,
@@ -197,7 +197,7 @@ export const featured = {
         },
         {
             id: 4,
-            name: 'Sushi',
+            name: 'Sushi Party',
             rating: 4.8,
             categories: [8],
             priceRating: expensive,
