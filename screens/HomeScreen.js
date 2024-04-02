@@ -37,7 +37,7 @@ export default function HomeScreen() {
         <Categories />
 
         {/* Featured */}
-        <View className="mt-5">
+        <View className="my-5">
           {
             [featured, featured, featured].map((item, index) => {
               return (

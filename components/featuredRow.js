@@ -6,7 +6,7 @@ import RestaurantCard from './restaurantCard'
 export default function FeaturedRow({title, description, restaurants}) {
   return (
     <View>
-        <View className="flex-row justify-between items-center px-4" >
+        <View className="flex-row justify-between items-center px-4">
             <View>
                 <Text className="font-bold text-lg">{title}</Text>
                 <Text className="text-gray-500 text-xs">{description}</Text>
