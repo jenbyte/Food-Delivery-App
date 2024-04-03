@@ -78,8 +78,8 @@ export const featured = {
             description: 'Hot and juicy burgers',
             address: '123 Wall St',
             location: {
-            latitude: 1.5347282806345879,
-            longitude: 110.35632207358996,
+                latitude: 42.19449886786383,
+                longitude: -120.34558000016682,
             },
             courier: {
             // avatar: images.avatar_1,
@@ -123,8 +123,8 @@ export const featured = {
             description: 'Hot and spicy pizza',
             address: '123 Wall St',
             location: {
-            latitude: 1.556306570595712,
-            longitude: 110.35504616746915,
+                latitude: 50.13753185075901, 
+                longitude: -97.31732800258142,
             },
             courier: {
             // avatar: images.avatar_2,
@@ -177,8 +177,8 @@ export const featured = {
             description: 'Hot and juicy hotdogs',
             address: '123 Wall St',
             location: {
-            latitude: 1.5238753474714375,
-            longitude: 110.34261833833622,
+                latitude: 49.19260737762959, 
+                longitude: -89.25395066095224,
             },
             courier: {
             // avatar: images.avatar_3,
@@ -206,8 +206,8 @@ export const featured = {
             description: 'Savory and delicious sushi',
             address: '123 Wall St',
             location: {
-            latitude: 1.5578068150528928,
-            longitude: 110.35482523764315,
+                latitude: 1.5578068150528928,
+                longitude: 110.35482523764315,
             },
             courier: {
             // avatar: images.avatar_4,
@@ -235,8 +235,8 @@ export const featured = {
             description: 'Hot and delicious noodles',
             address: '123 Wall St',
             location: {
-            latitude: 1.558050496260768,
-            longitude: 110.34743759630511,
+                latitude: 1.558050496260768,
+                longitude: 110.34743759630511,
             },
             courier: {
             // avatar: images.avatar_4,
@@ -288,8 +288,8 @@ export const featured = {
             description: 'Sweet and mouth-watering sweets',
             address: '123 Wall St',
             location: {
-            latitude: 1.5573478487252896,
-            longitude: 110.35568783282145,
+                latitude: 35.695800322100474, 
+                longitude: 139.71134304996212,
             },
             courier: {
             // avatar: images.avatar_1,
