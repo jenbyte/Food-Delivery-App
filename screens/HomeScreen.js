@@ -3,9 +3,10 @@ import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
 import * as Icon from "react-native-feather";
+
 import { themeColors } from '../theme';
-import Categories from '../components/categories';
 import { featured } from '../constants';
+import Categories from '../components/categories';
 import FeaturedRow from '../components/featuredRow';
 
 export default function HomeScreen() {

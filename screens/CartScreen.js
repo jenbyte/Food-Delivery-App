@@ -1,18 +1,19 @@
 import { View, Text, TouchableOpacity, Image, ScrollView, Touchable } from 'react-native'
 import React from 'react'
-import { featured } from '../constants'
-import { themeColors } from '../theme';
-
 import * as Icon from "react-native-feather";
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+
+import { selectRestaurant } from '../slices/restaurantSlice';
+import { themeColors } from '../theme';
 
 export default function CartScreen() {
-    const restaurant = featured.restaurants[0];
+    const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
+    console.log('--restaurant:', restaurant)
 
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <View className="bg-white flex-1">
         {/* Back Btn */}
         <View className="relative py-4 shadow-sm">
             <TouchableOpacity 
@@ -96,6 +97,6 @@ export default function CartScreen() {
                 </TouchableOpacity>
             </View>
         </View>
-    </SafeAreaView>
+    </View>
   )
 }

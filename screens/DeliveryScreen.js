@@ -1,13 +1,15 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { featured } from '../constants'
-import { useNavigation } from '@react-navigation/native';
-import MapView, {Marker} from 'react-native-maps';
-import { themeColors } from '../theme';
 import * as Icon from "react-native-feather";
+import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
+import MapView, {Marker} from 'react-native-maps';
+
+import { themeColors } from '../theme';
+import { selectRestaurant } from '../slices/restaurantSlice';
 
 export default function DeliveryScreen({}) {
-    const restaurant = featured.restaurants[0];
+    const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
 
   return (
@@ -59,7 +61,7 @@ export default function DeliveryScreen({}) {
             </View>
             <View className="flex-1 ml-3">
                 <Text className="text-lg font-bold text-white">
-                    Syed Noman
+                    John Smith
                 </Text>
                 <Text className="font-semibold text-white">
                     Your Rider

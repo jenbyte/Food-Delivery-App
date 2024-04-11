@@ -25,7 +25,6 @@ export default function CartIcon() {
                 ${23}
             </Text>
         </TouchableOpacity>
-      <Text>CartIcon</Text>
     </View>
   )
 }
