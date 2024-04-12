@@ -6,11 +6,15 @@ import { useSelector } from 'react-redux';
 
 import { selectRestaurant } from '../slices/restaurantSlice';
 import { themeColors } from '../theme';
+import { featured } from '../constants';
+import { store } from '../store';
 
 export default function CartScreen() {
     const restaurant = useSelector(selectRestaurant);
+    // const restaurant = featured.restaurants[0];
     const navigation = useNavigation();
     console.log('--restaurant:', restaurant)
+    console.log('???', store.getState());
 
   return (
     <View className="bg-white flex-1">
@@ -25,7 +29,7 @@ export default function CartScreen() {
             </TouchableOpacity>
             <View>
                 <Text className="text-center font-bold text-xl">Your cart</Text>
-                <Text className="text-center text-gray-500">{restaurant.name}</Text>
+                <Text className="text-center text-gray-500">{restaurant ? restaurant.name: ''}</Text>
             </View>
         </View>
 
@@ -35,7 +39,7 @@ export default function CartScreen() {
             <View className="justify-center p-3 w-20 h-20 rounded-full">
                 <Image source={require('../assets/images/icons/food-delivery.png')} className="w-16 h-16 founded-full" />
             </View>
-            <Text className="flex-1 pl-4">Deliver in {restaurant.duration}</Text>
+            <Text className="flex-1 pl-4">Deliver in {restaurant ? restaurant.duration : ''}</Text>
             <TouchableOpacity>
                 <Text className="font-bold" style={{color: themeColors.text}}>
                     Change
@@ -49,7 +53,7 @@ export default function CartScreen() {
             contentContainerStyle={{paddingBottom: 50}}
             className="bg-white pt-5"
         >
-            {
+            {   restaurant ? 
                 restaurant.menu.map((dish, index) => {
                     return (
                         <View key={index}
@@ -68,6 +72,8 @@ export default function CartScreen() {
                         </View>
                     )
                 })
+                :
+                ''
             }
         </ScrollView>
         

@@ -10,24 +10,26 @@ import { categoriesMap } from '../constants';
 import DishRow from '../components/dishRow';
 import CartIcon from '../components/cartIcon';
 import { setRestaurant } from '../slices/restaurantSlice';
+import { store } from '../store';
 
 export default function RestaurantScreen() {
-  const {params} =  useRoute();
+  const {params} = useRoute();
   const navigation = useNavigation();
   const dispatch = useDispatch();
   let item = params;
-  let itemAdded = true;
   
   useEffect(() => {
-    console.log({item})
+    console.log('restaurnat:', {item})
     if (item & item.id) {
       dispatch(setRestaurant({...item}));
     }
   }, []);
 
+  console.log('-RestaurantScreen - state:', store.getState());
+
   return (
     <View>
-      {itemAdded ? <CartIcon /> : ''}
+      <CartIcon /> 
       <StatusBar style='light' />
       <ScrollView>
         <View className="relative">
@@ -49,13 +51,13 @@ export default function RestaurantScreen() {
               <Text className="text-xs">
                 <Text className="text-green-700">{item.rating}</Text>
                 <Text className="text-gray-700">
-                        {
-                            item.categories.map((category, index) => {
-                                return (
-                                    <Text key={index}> · {categoriesMap(category)}</Text>
-                                )
-                            })
-                        }
+                  {
+                    item.categories.map((category, index) => {
+                      return (
+                        <Text key={index}> · {categoriesMap(category)}</Text>
+                      )
+                    })
+                  }
                 </Text>
               </Text>
               <View className="flex-row items-center space-x-1">
