@@ -1,9 +1,9 @@
 import { View, Text, TouchableWithoutFeedback, Image } from 'react-native'
 import React from 'react'
-import { categoriesMap } from '../constants'
 import * as Icon from "react-native-feather";
-import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
+
+import { categoriesMap } from '../constants'
 
 export default function RestaurantCard({item}) {
     const navigation = useNavigation()

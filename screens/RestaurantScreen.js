@@ -3,13 +3,13 @@ import React, { useEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import * as Icon from "react-native-feather";
 import { StatusBar } from 'expo-status-bar';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { themeColors } from '../theme';
 import { categoriesMap } from '../constants';
 import DishRow from '../components/dishRow';
 import CartIcon from '../components/cartIcon';
-import { setRestaurant } from '../slices/restaurantSlice';
+import { selectRestaurant, setRestaurant } from '../slices/restaurantSlice';
 import { store } from '../store';
 
 export default function RestaurantScreen() {
@@ -17,15 +17,13 @@ export default function RestaurantScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   let item = params;
-  
+
   useEffect(() => {
-    console.log('restaurnat:', {item})
     if (item & item.id) {
       dispatch(setRestaurant({...item}));
     }
-  }, []);
+  }, [item]);
 
-  console.log('-RestaurantScreen - state:', store.getState());
 
   return (
     <View>

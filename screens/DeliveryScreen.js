@@ -1,21 +1,27 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
 import * as Icon from "react-native-feather";
-import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
 import MapView, {Marker} from 'react-native-maps';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { themeColors } from '../theme';
 import { selectRestaurant } from '../slices/restaurantSlice';
+import { emptyCart } from '../slices/cartSlice';
 
 export default function DeliveryScreen({}) {
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
+    const dispatch = useDispatch();
+
+    const cancelOrder = ()=> {
+        navigation.navigate('Home');
+        dispatch(emptyCart());
+    }
 
   return (
     <View className="flex-1">
-        {/* Map View */}
 
+        {/* Map View */}
       <MapView
         initialRegion={{
             latitude: restaurant.location.latitude,
@@ -71,7 +77,7 @@ export default function DeliveryScreen({}) {
                 <TouchableOpacity className="bg-white p-2 rounded-full">
                     <Icon.Phone fill={themeColors.bgColor(1)} strokeWidth={1} />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate('Home')} className="bg-white p-2 rounded-full">
+                <TouchableOpacity onPress={cancelOrder} className="bg-white p-2 rounded-full">
                     <Icon.X stroke={'red'} strokeWidth={4} />
                 </TouchableOpacity>
             </View>
