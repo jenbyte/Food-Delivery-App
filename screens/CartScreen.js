@@ -8,8 +8,10 @@ import { selectRestaurant } from '../slices/restaurantSlice';
 import { themeColors } from '../theme';
 import { featured } from '../constants';
 import { removeFromCart, selectCartItems, selectCartTotal } from '../slices/cartSlice';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CartScreen() {
+    const dispatch = useDispatch();
     const restaurant = useSelector(selectRestaurant);
     // const restaurant = featured.restaurants[0];
     const navigation = useNavigation();
@@ -17,7 +19,6 @@ export default function CartScreen() {
     const cartTotal = useSelector(selectCartTotal);
     const deliveryFee = 2;
     const [groupedItems, setGroupedItems] = useState({});
-    const dispatch = useDispatch();
 
     console.log('CartScreen', {restaurant})
 
@@ -34,7 +35,7 @@ export default function CartScreen() {
     },[cartItems]);
 
   return (
-    <View className="bg-white flex-1">
+    <SafeAreaView className="bg-white flex-1">
         {/* Back Btn */}
         <View className="relative py-4 shadow-sm">
             <TouchableOpacity 
@@ -120,6 +121,6 @@ export default function CartScreen() {
                 </TouchableOpacity>
             </View>
         </View>
-    </View>
+    </SafeAreaView>
   )
 }

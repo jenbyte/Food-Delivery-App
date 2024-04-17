@@ -9,9 +9,7 @@ export default function RestaurantCard({item}) {
     const navigation = useNavigation()
 
   return (
-    <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('Restaurant', {...item})}
-    >
+    <TouchableWithoutFeedback onPress={() => navigation.navigate('Restaurant', {...item})}>
         <View style={{
                 shadowColor: '#000', //themeColors.bgColor(0.5)
                 shadowRadius: 7

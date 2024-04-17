@@ -4,10 +4,11 @@ import * as Icon from "react-native-feather";
 import { useDispatch, useSelector } from 'react-redux';
 import { themeColors } from '../theme'
 import { addToCart, removeFromCart, selectCartItemsById } from '../slices/cartSlice';
+import { store } from '../store';
 
 export default function DishRow({item}) {
     const dispatch = useDispatch();
-    const totalItems = useSelector(state => selectCartItemsById(state, item.id));
+    const itemCounter = useSelector(state => selectCartItemsById(state, item.id));
 
     const handleIncrease = ()=>{
         dispatch(addToCart({...item}))
@@ -31,13 +32,13 @@ export default function DishRow({item}) {
             <View className="flex-row items-center">
                 <TouchableOpacity className="p-1 rounded-full"
                     onPress={handleDecrease}
-                    disabled={!totalItems.length}
+                    disabled={!itemCounter.length}
                     style={{backgroundColor: themeColors.bgColor(1)}}
                 >
                     <Icon.Minus strokeWidth={2} height={20} width={20} stroke={'white'} />
                 </TouchableOpacity>
                 <Text className="px-3">
-                    {totalItems.length}
+                    {itemCounter.length}
                 </Text>
                 <TouchableOpacity className="p-1 rounded-full"
                     onPress={handleIncrease}

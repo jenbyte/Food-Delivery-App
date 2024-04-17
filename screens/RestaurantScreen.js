@@ -9,21 +9,23 @@ import { themeColors } from '../theme';
 import { categoriesMap } from '../constants';
 import DishRow from '../components/dishRow';
 import CartIcon from '../components/cartIcon';
-import { selectRestaurant, setRestaurant } from '../slices/restaurantSlice';
+import { setRestaurant } from '../slices/restaurantSlice';
 import { store } from '../store';
 
 export default function RestaurantScreen() {
   const {params} = useRoute();
   const navigation = useNavigation();
-  const dispatch = useDispatch();
   let item = params;
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log('Dispatching setRestaurant with item:', item);
     if (item & item.id) {
       dispatch(setRestaurant({...item}));
     }
-  }, [item]);
+  }, []);
 
+  console.log('state', store.getState())
 
   return (
     <View>
@@ -70,7 +72,9 @@ export default function RestaurantScreen() {
           <Text className="px-4 py-4 text-2xl font-bold">Menu</Text>
           {/* Dishes */}
           {
-            item.menu.map((dish, index) => <DishRow item={{...dish}} key={index} />)
+            item.menu.map((dish, index) => 
+              <DishRow item={{...dish}} key={index} />
+            )
           }
         </View>
       </ScrollView>
