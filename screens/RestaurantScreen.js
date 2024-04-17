@@ -24,9 +24,8 @@ export default function RestaurantScreen() {
     }
   }, [item]);
 
-
   return (
-    <View>
+    <View className="h-full bg-white">
       <CartIcon /> 
       <StatusBar style='light' />
       <ScrollView>
@@ -39,9 +38,9 @@ export default function RestaurantScreen() {
             <Icon.ArrowLeft strokeWidth={3} stroke={themeColors.bgColor(1)} />
           </TouchableOpacity>
         </View>
+        
         <View 
-          className="bg-white -mt-12 pt-6 rounded-t-3xl"
-        >
+          className="bg-white -mt-12 pt-6 rounded-t-3xl">
           <View className="px-5">
             <Text className="text-3xl font-bold">{item.name}</Text>
             <View className="flex-row items-center space-x-1">
@@ -66,7 +65,7 @@ export default function RestaurantScreen() {
             <Text className="text-gray-500 mt-2">{item.description}</Text>
           </View>
         </View>
-        <View className="pb-36 bg-white">
+        <View className="pb-36 bg-white h-full">
           <Text className="px-4 py-4 text-2xl font-bold">Menu</Text>
           {/* Dishes */}
           {

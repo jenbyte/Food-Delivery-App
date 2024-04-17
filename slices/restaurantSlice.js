@@ -9,7 +9,6 @@ export const restaurantSlice = createSlice({
   initialState,
   reducers: {
     setRestaurant: (state, action) => {
-        console.log('rSlice:', state, action)
         return {...state, restaurant: action.payload}
     },
   },
