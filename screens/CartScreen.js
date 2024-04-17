@@ -1,19 +1,17 @@
 import { View, Text, TouchableOpacity, Image, ScrollView, Touchable } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import * as Icon from "react-native-feather";
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectRestaurant } from '../slices/restaurantSlice';
-import { themeColors } from '../theme';
-import { featured } from '../constants';
 import { removeFromCart, selectCartItems, selectCartTotal } from '../slices/cartSlice';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { themeColors } from '../theme';
 
 export default function CartScreen() {
     const dispatch = useDispatch();
     const restaurant = useSelector(selectRestaurant);
-    // const restaurant = featured.restaurants[0];
     const navigation = useNavigation();
     const cartItems = useSelector(selectCartItems);
     const cartTotal = useSelector(selectCartTotal);

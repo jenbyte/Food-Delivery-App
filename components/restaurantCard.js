@@ -3,7 +3,8 @@ import React from 'react'
 import * as Icon from "react-native-feather";
 import { useNavigation } from '@react-navigation/native';
 
-import { categoriesMap } from '../constants'
+import { categoriesMap } from '../constants';
+import { themeColors } from '../theme';
 
 export default function RestaurantCard({item}) {
     const navigation = useNavigation()
@@ -11,10 +12,10 @@ export default function RestaurantCard({item}) {
   return (
     <TouchableWithoutFeedback onPress={() => navigation.navigate('Restaurant', {...item})}>
         <View style={{
-                shadowColor: '#000', //themeColors.bgColor(0.5)
+                shadowColor: 'rgba(0, 0, 0, 0.6)', //themeColors.bgColor(1),
                 shadowRadius: 7
             }} 
-            className="mr-6 bg-white rounded-3xl shadow-lg"
+            className="mr-6 mb-3 bg-white rounded-3xl shadow-lg"
         >
             <Image className="h-36 w-64 rounded-t-3xl" source={item.photo} />
             <View className="px-3 pb-4 space-y-2">

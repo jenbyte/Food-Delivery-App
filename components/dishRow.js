@@ -8,6 +8,8 @@ import { store } from '../store';
 
 export default function DishRow({item}) {
     const dispatch = useDispatch();
+    const dishName = item ? item.name : '';
+    const dishDescription = item ? item.description : '';
     const itemCounter = useSelector(state => selectCartItemsById(state, item.id));
 
     const handleIncrease = ()=>{
@@ -18,17 +20,24 @@ export default function DishRow({item}) {
     }
 
   return (
-    <View className="flex-row items-center bg-white p-3 rounded-3xl shadow-2xl mb-3 mx-2">
+    <View 
+        style={{
+            shadowColor: 'rgba(0, 0, 0, 0.7)', //themeColors.bgColor(0.5),
+            // shadowRadius: 100
+        }}
+        className="flex-row items-center bg-white p-3 rounded-3xl shadow-lg mb-3 mx-2">
       <Image className="rounded-3xl" style={{height: 100, width: 100}} source={item.photo} />
       <View className="flex flex-1 space-y-3">
         <View className="pl-3">
-            <Text className="text-xl">{item.name}</Text>
-            <Text className="text-gray-700">{item.description}</Text>
+            <Text className="text-xl">{dishName}</Text>
+            <Text className="text-gray-700">{dishDescription}</Text>
         </View>
         <View className="flex-row justify-between pl-3 items-center">
             <Text className="text-gray-700 text-lg font-bold">
                 ${item.price}
             </Text>
+
+            {/* - Buttons + */}
             <View className="flex-row items-center">
                 <TouchableOpacity className="p-1 rounded-full"
                     onPress={handleDecrease}

@@ -1,4 +1,4 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   items: [],
@@ -9,7 +9,8 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.items = [...state.items, action.payload]
+        console.log('cSlice:', state, action)
+      state.items = [...state.items, action.payload];
     },
     removeFromCart: (state, action) => {
       let newCart = [...state.items];
@@ -40,7 +41,7 @@ function memoize(func) {
       lastResult = func(...args);
       return lastResult;
     };
-  }
+}
 
 // Action creators are generated for each case reducer function
 export const { addToCart, removeFromCart, emptyCart } = cartSlice.actions;

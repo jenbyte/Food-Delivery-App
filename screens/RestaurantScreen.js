@@ -10,7 +10,6 @@ import { categoriesMap } from '../constants';
 import DishRow from '../components/dishRow';
 import CartIcon from '../components/cartIcon';
 import { setRestaurant } from '../slices/restaurantSlice';
-import { store } from '../store';
 
 export default function RestaurantScreen() {
   const {params} = useRoute();
@@ -19,13 +18,12 @@ export default function RestaurantScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('Dispatching setRestaurant with item:', item);
-    if (item & item.id) {
+    console.log('setRestaurant item:', item);
+    if (item && item.id) {
       dispatch(setRestaurant({...item}));
     }
-  }, []);
+  }, [item]);
 
-  console.log('state', store.getState())
 
   return (
     <View>

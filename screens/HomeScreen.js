@@ -21,7 +21,7 @@ export default function HomeScreen() {
           <TextInput placeholder='Restaurants' className="ml-2 flex-1" />
           <View className="flex-row items-center space-x-1 border-0 border-l-2 pl-2 border-l-gray-300">
             <Icon.MapPin height="20" width="20" stroke="gray" />
-            <Text className="text-gray-600">New York, NYC</Text>
+            <Text className="text-gray-600">Vancouver, Canada</Text>
           </View>
         </View>
         <View style={{backgroundColor: themeColors.bgColor(1)}} className="p-3 bg-gray-300 rounded-full">

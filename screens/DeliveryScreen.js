@@ -8,14 +8,12 @@ import { themeColors } from '../theme';
 import { selectRestaurant } from '../slices/restaurantSlice';
 import { emptyCart } from '../slices/cartSlice';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { featured } from '../constants';
 
 export default function DeliveryScreen({}) {
     const restaurant = useSelector(selectRestaurant);
-    // const restaurant = featured.restaurants[0];
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const courier = restaurant ? restaurant.courier : '';
+    const courier = restaurant ? restaurant.courier.name : '';
     const deliveryDuration = restaurant ? restaurant.duration : '';
 
     console.log("DS:", restaurant)
