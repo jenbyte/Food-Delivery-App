@@ -21,6 +21,11 @@ export default defineType({
       name: 'image',
       type: 'image',
       title: 'image of dish'
+    },
+    {
+      name: 'price',
+      type: 'number',
+      title: 'Price of the dish in CAD'
     }
   ],
 })
