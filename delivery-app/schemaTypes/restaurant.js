@@ -62,17 +62,5 @@ export default defineType({
       title: 'Dishes', 
       of: [{type: 'reference', to: [{type: 'dish'}]}]
     },
-  ],
-
-  preview: {
-    select: {
-      title: 'title',
-      author: 'author.name',
-      media: 'mainImage',
-    },
-    prepare(selection) {
-      const {author} = selection
-      return {...selection, subtitle: author && `by ${author}`}
-    },
-  },
+  ]
 })
