@@ -13,10 +13,9 @@ export default function DeliveryScreen({}) {
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const courier = restaurant ? restaurant.courier.name : '';
-    const deliveryDuration = restaurant ? restaurant.duration : '';
+    const courier = restaurant?.courier?.name;
+    const deliveryDuration = restaurant?.duration;
 
-    console.log("DS:", restaurant)
     const cancelOrder = ()=> {
         navigation.navigate('Home');
         dispatch(emptyCart());

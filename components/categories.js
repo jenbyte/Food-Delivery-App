@@ -14,19 +14,19 @@ export default function Categories() {
       >
         {
             categories.map((category, index) => {
-                let isActive = category.id===activeCategory;
+                let isActive = category?.id===activeCategory;
                 let btnClas = isActive ? 'bg-gray-600' : 'bg-gray-200';
                 let textClass = isActive ? 'font-semibold text-gray-800' : 'text-gray-500';
 
                 return (
                     <View key={index} className="flex justify-center items-center mr-6">
                         <TouchableOpacity 
-                            onPress={() => setActiveCategory(category.id)}
+                            onPress={() => setActiveCategory(category?.id)}
                             className={"p-1 rounded-full shadow bg-gray-200" + btnClas}
                         >
                             <Image style={{width: 45, height: 45}} 
-                                source={category.icon} />
-                            <Text className={"text-sm "+textClass}>{category.name}</Text>
+                                source={category?.icon} />
+                            <Text className={"text-sm "+textClass}>{category?.name}</Text>
                         </TouchableOpacity>
                     </View>
                 )
