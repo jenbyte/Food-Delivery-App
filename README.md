@@ -5,21 +5,25 @@
 
 Start by cloning the repo to your personal machine. Make sure you have react native and Node installed.
 
-### Run Expo
+### Run app through Expo
 
 `npx expo start`
 
-### Run Sanity
+### Run sanity
 
 ```
 cd delivery-app
 npm run dev
 ```
 
+### Deploy
+
+`npm run deploy`
+
 ## Technologies Used
 
 - React Native 
 - Expo
 - Redux
-- NativeWind / TailwindCSS
+- TailwindCSS
 - Sanity.io - building schemas
