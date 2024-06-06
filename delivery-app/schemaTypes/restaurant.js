@@ -2,7 +2,7 @@ import {defineField, defineType} from 'sanity'
 
 export default defineType({
   name: 'restaurant',
-  title: 'Restaurant',
+  title: 'Restaurants',
   type: 'document',
   fields: [
     {
@@ -42,7 +42,7 @@ export default defineType({
       name: 'rating',
       type: 'number',
       title: 'Enter a number between 1 and 5',
-      validation: rule => rule.required().min(1).max(5).value('Enter a value between 1 and 5')
+      validation: rule => rule.required().min(1).max(5).error('Enter a value between 1 and 5')
     },
     {
       name: 'reviews',
@@ -51,10 +51,10 @@ export default defineType({
     },
     {
       name: 'type',
+      type: 'array',
       title: 'Category', 
       validation: rule => rule.required(),
-      type: 'reference',
-      to: [{type: 'category'}]
+      of: [{type: 'reference', to: [{type: 'category'}]}]
     },
     {
       name: 'dishes',
