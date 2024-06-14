@@ -34,7 +34,7 @@ export default function CartScreen() {
     },[cartItems]);
 
   return (
-    <SafeAreaView className="bg-white flex-1">
+    <View className="bg-white flex-1 pt-3">
         {/* Back Btn */}
         <View className="relative py-4 shadow-sm">
             <TouchableOpacity 
@@ -122,6 +122,6 @@ export default function CartScreen() {
                 </TouchableOpacity>
             </View>
         </View>
-    </SafeAreaView>
+    </View>
   )
 }
