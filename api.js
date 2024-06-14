@@ -7,7 +7,7 @@ export const getFeaturedRestaurants = () => {
             ...,
             restaurants[]->{
                 ...,
-                dishes[]->{s
+                dishes[]->{
                     ...
                 },
                 type[]->{

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../slices/restaurantSlice';
 import { removeFromCart, selectCartItems, selectCartTotal } from '../slices/cartSlice';
 import { themeColors } from '../theme';
+import { urlFor } from '../sanity';
 
 export default function CartScreen() {
     const dispatch = useDispatch();
@@ -18,14 +19,12 @@ export default function CartScreen() {
     const deliveryFee = 2;
     const [groupedItems, setGroupedItems] = useState({});
 
-    console.log('CartScreen', {restaurant})
-
     useEffect(()=>{
         const items = cartItems.reduce((group, item)=> {
-            if(group[item.id]){
-                group[item.id].push(item);
+            if(group[item._id]){
+                group[item._id].push(item);
             }else{
-                group[item.id] = [item];
+                group[item._id] = [item];
             }
             return group;
         }, {})
@@ -45,7 +44,7 @@ export default function CartScreen() {
             </TouchableOpacity>
             <View>
                 <Text className="text-center font-bold text-xl">Your cart</Text>
-                <Text className="text-center text-gray-500">{restaurant ? restaurant.name: ''}</Text>
+                <Text className="text-center text-gray-500">{restaurant?.name}</Text>
             </View>
         </View>
 
@@ -55,7 +54,7 @@ export default function CartScreen() {
             <View className="justify-center p-3 w-20 h-20 rounded-full">
                 <Image source={require('../assets/images/icons/food-delivery.png')} className="w-16 h-16 founded-full" />
             </View>
-            <Text className="flex-1 pl-4">Deliver in {restaurant ? restaurant.duration : ''}</Text>
+            <Text className="flex-1 pl-4">Deliver in {restaurant?.duration}</Text>
             <TouchableOpacity>
                 <Text className="font-bold" style={{color: themeColors.text}}>
                     Change
@@ -78,7 +77,7 @@ export default function CartScreen() {
                             <Text className="font-bold" style={{color: themeColors.text}}>
                                 {items.length} x
                             </Text>
-                            <Image className="h-14 w-14 rounded-full" source={dish.photo} />
+                            <Image className="h-14 w-14 rounded-full" source={{uri: urlFor(dish.image).url()}} />
                             <Text className="flex-1 font-bold text-gray-700">{dish.name}</Text>
                             <Text className="font-semibold text-base">${dish.price}</Text>
                             <TouchableOpacity className="p-1 rounded-full"

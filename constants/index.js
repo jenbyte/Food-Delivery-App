@@ -324,11 +324,3 @@ export const featured = {
         },
         ]
 }
-
-export const categoriesMap = (categoryId) => {
-    return categories.map((category, index) => {
-        if (category.id === categoryId) {
-            return category.name;
-        }
-    })
-}

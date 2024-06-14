@@ -6,10 +6,10 @@ import { StatusBar } from 'expo-status-bar';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { themeColors } from '../theme';
-import { categoriesMap } from '../constants';
 import DishRow from '../components/dishRow';
 import CartIcon from '../components/cartIcon';
 import { setRestaurant } from '../slices/restaurantSlice';
+import { urlFor } from '../sanity';
 
 export default function RestaurantScreen() {
   const {params} = useRoute();
@@ -18,8 +18,7 @@ export default function RestaurantScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('setRestaurant item:', item);
-    if (item && item.id) {
+    if (item && item._id) {
       dispatch(setRestaurant({...item}));
     }
   }, [item]);
@@ -30,7 +29,7 @@ export default function RestaurantScreen() {
       <StatusBar style='light' />
       <ScrollView>
         <View className="relative">
-          <Image className="w-full h-72" source={item?.photo} />
+          <Image className="w-full h-72" source={{uri: urlFor(item.image).url()}} />
           <TouchableOpacity 
             onPress={() => navigation.goBack()}  
             className="absolute top-14 left-4 bg-gray-50 p-2 rounded-full shadow"
@@ -49,9 +48,9 @@ export default function RestaurantScreen() {
                 <Text className="text-green-700">{item?.rating}</Text>
                 <Text className="text-gray-700">
                   {
-                    item?.categories.map((category, index) => {
+                    item?.type.map((category, index) => {
                       return (
-                        <Text key={index}> · {categoriesMap(category)}</Text>
+                        <Text key={index}> · {category.name}</Text>
                       )
                     })
                   }
@@ -69,7 +68,7 @@ export default function RestaurantScreen() {
           <Text className="px-4 py-4 text-2xl font-bold">Menu</Text>
           {/* Dishes */}
           {
-            item?.menu?.map((dish, index) => 
+            item?.dishes?.map((dish, index) => 
               <DishRow item={{...dish}} key={index} />
             )
           }

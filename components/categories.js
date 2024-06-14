@@ -1,16 +1,18 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { categories } from '../constants'
+// import { categories } from '../constants'
 import { getCategories, getFeaturedRestaurants } from '../api';
+import { urlFor } from '../sanity';
 
 export default function Categories() {
-    const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState(null);
+  let [categories, setCategories] = useState([])
 
-    useEffect(()=>{
-      getCategories().then(data=>{
-        console.log('got data: ', data);
-      })
+  useEffect(()=>{
+    getCategories().then(data=>{
+      setCategories(data);
     })
+  },[])
 
   return (
     <View className="mt-4">
@@ -20,24 +22,25 @@ export default function Categories() {
         contentContainerStyle={{ paddingHorizontal: 15 }}
       >
         {
-            categories.map((category, index) => {
-                let isActive = category?.id===activeCategory;
-                let btnClas = isActive ? 'bg-gray-600' : 'bg-gray-200';
-                let textClass = isActive ? 'font-semibold text-gray-800' : 'text-gray-500';
+          categories.map((category, index) => {
+            let isActive = category?._id===activeCategory;
+            let btnClas = isActive ? 'bg-gray-600' : 'bg-gray-200';
+            let textClass = isActive ? 'font-semibold text-gray-800' : 'text-gray-500';
 
-                return (
-                    <View key={index} className="flex justify-center items-center mr-6">
-                        <TouchableOpacity 
-                            onPress={() => setActiveCategory(category?.id)}
-                            className={"p-1 rounded-full shadow bg-gray-200" + btnClas}
-                        >
-                            <Image style={{width: 45, height: 45}} 
-                                source={category?.icon} />
-                            <Text className={"text-sm "+textClass}>{category?.name}</Text>
-                        </TouchableOpacity>
-                    </View>
-                )
-            })
+            return (
+              <View key={index} className="flex justify-center items-center mr-6">
+                  <TouchableOpacity 
+                    onPress={() => setActiveCategory(category?._id)}
+                    className={"p-1 rounded-full shadow bg-gray-200 " + btnClas}
+                  >
+                    <Image style={{width: 45, height: 45}} 
+                      source={{uri: urlFor(category.image).url()}} 
+                    />
+                  </TouchableOpacity>
+                  <Text className={"text-sm "+textClass}>{category?.name}</Text>
+              </View>
+            )
+          })
         }
       </ScrollView>
     </View>

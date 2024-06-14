@@ -26,8 +26,8 @@ export default function DeliveryScreen({}) {
         { restaurant ? 
             <MapView
                 initialRegion={{
-                    latitude: restaurant.location.latitude,
-                    longitude: restaurant.location.longitude,
+                    latitude: restaurant?.lat,
+                    longitude: restaurant?.lng,
                     latitudeDelta: 0.01,
                     longitudeDelta: 0.01
                 }}

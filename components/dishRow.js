@@ -5,18 +5,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { themeColors } from '../theme'
 import { addToCart, removeFromCart, selectCartItemsById } from '../slices/cartSlice';
 import { store } from '../store';
+import { urlFor } from '../sanity';
 
 export default function DishRow({item}) {
     const dispatch = useDispatch();
     const dishName = item?.name;
     const dishDescription = item?.description;
-    const itemCounter = useSelector(state => selectCartItemsById(state, item.id));
+    const itemCounter = useSelector(state => selectCartItemsById(state, item._id));
 
     const handleIncrease = ()=>{
         dispatch(addToCart({...item}))
     }
     const handleDecrease = ()=>{
-        dispatch(removeFromCart({id: item.id}))
+        dispatch(removeFromCart({id: item._id}))
     }
 
   return (
@@ -25,7 +26,7 @@ export default function DishRow({item}) {
             shadowColor: 'rgba(0, 0, 0, 0.7)', //themeColors.bgColor(0.5),
         }}
         className="flex-row items-center bg-white p-3 rounded-3xl shadow-lg mb-3 mx-2">
-      <Image className="rounded-3xl" style={{height: 100, width: 100}} source={item?.photo} />
+      <Image className="rounded-3xl" style={{height: 100, width: 100}} source={{uri: urlFor(item.image).url()}} />
       <View className="flex flex-1 space-y-3">
         <View className="pl-3">
             <Text className="text-xl">{dishName}</Text>

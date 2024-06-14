@@ -3,8 +3,8 @@ import React from 'react'
 import * as Icon from "react-native-feather";
 import { useNavigation } from '@react-navigation/native';
 
-import { categoriesMap } from '../constants';
 import { themeColors } from '../theme';
+import { urlFor } from '../sanity';
 
 export default function RestaurantCard({item}) {
     const navigation = useNavigation()
@@ -17,7 +17,7 @@ export default function RestaurantCard({item}) {
             }} 
             className="mr-6 mb-3 bg-white rounded-3xl shadow-lg"
         >
-            <Image className="h-36 w-64 rounded-t-3xl" source={item?.photo} />
+            <Image className="h-36 w-64 rounded-t-3xl" source={{uri: urlFor(item.image).url()}} />
             <View className="px-3 pb-4 space-y-2">
                 <Text className="text-lg font-bold pt-2">{item?.name}</Text>
                 <View className="flex-row items-center space-x-1">
@@ -26,9 +26,9 @@ export default function RestaurantCard({item}) {
                         <Text className="text-green-700">{item?.rating}</Text>
                         <Text className="text-gray-700">
                                 {
-                                    item?.categories.map((category, index) => {
+                                    item?.type.map((category, index) => {
                                         return (
-                                            <Text key={index}> · {categoriesMap(category)}</Text>
+                                            <Text key={index}> · {category.name}</Text>
                                         )
                                     })
                                 }
