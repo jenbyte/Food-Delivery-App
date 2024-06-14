@@ -13,8 +13,8 @@ export default function DeliveryScreen({}) {
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
     const dispatch = useDispatch();
-    const courier = restaurant?.courier?.name;
-    const deliveryDuration = restaurant?.duration;
+    const courier = restaurant?.courier?.name || "David Park";
+    const deliveryDuration = restaurant?.duration || "20 - 30 minutes";
 
     const cancelOrder = ()=> {
         navigation.navigate('Home');
@@ -36,8 +36,8 @@ export default function DeliveryScreen({}) {
             >
                 <Marker
                     coordinate={{
-                        latitude: restaurant.location.latitude,
-                        longitude: restaurant.location.longitude
+                        latitude: restaurant.lat,
+                        longitude: restaurant.lng
                     }}
                     title={restaurant.name}
                     description={restaurant.description}
@@ -59,7 +59,7 @@ export default function DeliveryScreen({}) {
         <View className="rounded-t-3xl -mt-12 bg-white relative">
             <View className="flex-row justify-between px-5 pt-10">
                 <Image className="w-24 h-24" source={require('../assets/images/delivery.gif')} />
-                <View>
+                <View className="pr-5">
                     <Text className="text-lg text-gray-700 font-semibold">
                         Estimated Arrival
                     </Text>

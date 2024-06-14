@@ -14,10 +14,12 @@ export default function CartScreen() {
     const dispatch = useDispatch();
     const restaurant = useSelector(selectRestaurant);
     const navigation = useNavigation();
+    const [groupedItems, setGroupedItems] = useState({});
     const cartItems = useSelector(selectCartItems);
     const cartTotal = useSelector(selectCartTotal);
+
     const deliveryFee = 2;
-    const [groupedItems, setGroupedItems] = useState({});
+    const deliveryDuration = restaurant?.duration || "20 - 30 minutes";
 
     useEffect(()=>{
         const items = cartItems.reduce((group, item)=> {
@@ -54,7 +56,7 @@ export default function CartScreen() {
             <View className="justify-center p-3 w-20 h-20 rounded-full">
                 <Image source={require('../assets/images/icons/food-delivery.png')} className="w-16 h-16 founded-full" />
             </View>
-            <Text className="flex-1 pl-4">Deliver in {restaurant?.duration}</Text>
+            <Text className="flex-1 pl-4">Deliver in {deliveryDuration}</Text>
             <TouchableOpacity>
                 <Text className="font-bold" style={{color: themeColors.text}}>
                     Change
@@ -80,8 +82,10 @@ export default function CartScreen() {
                             <Image className="h-14 w-14 rounded-full" source={{uri: urlFor(dish.image).url()}} />
                             <Text className="flex-1 font-bold text-gray-700">{dish.name}</Text>
                             <Text className="font-semibold text-base">${dish.price}</Text>
+
+                            {/* Remove Button */}
                             <TouchableOpacity className="p-1 rounded-full"
-                                onPress={() => dispatch(removeFromCart({id: dish.id}))}
+                                onPress={() => dispatch(removeFromCart({id: dish._id}))}
                                 style={{backgroundColor: themeColors.bgColor(1)}}
                             >
                                 <Icon.Minus strokeWidth={2} height={20} width={20} stroke='white' />
