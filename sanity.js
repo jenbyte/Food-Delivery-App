@@ -1,8 +1,8 @@
-import { sanityClient } from '@sanity/client';
+import {createClient} from '@sanity/client';
 import imageBuilder from '@sanity/image-url';
 
-const client = sanityClient({
-    projectId: '',
+const client = createClient({
+    projectId: 'pqox38n0',
     dataset: 'production',
     useCdn: true,
     apiVersion: '2024-06-06'
@@ -14,4 +14,4 @@ export const urlFor = source => builder.image(source);
 
 export default client;
 
-// sanity cors add http://localhost:3000
+// (11:30) sanity cors add http://localhost:3000

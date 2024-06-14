@@ -1,9 +1,16 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { categories } from '../constants'
+import { getCategories, getFeaturedRestaurants } from '../api';
 
 export default function Categories() {
     const [activeCategory, setActiveCategory] = useState(null);
+
+    useEffect(()=>{
+      getCategories().then(data=>{
+        console.log('got data: ', data);
+      })
+    })
 
   return (
     <View className="mt-4">
