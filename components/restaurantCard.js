@@ -25,12 +25,9 @@ export default function RestaurantCard({item}) {
                     <Text className="text-xs">
                         <Text className="text-green-700">{item?.rating}</Text>
                         <Text className="text-gray-700">
-                                {
-                                    item?.type.map((category, index) => {
-                                        return (
-                                            <Text key={index}> · {category.name}</Text>
-                                        )
-                                    })
+                                {   item?.type.map((category, index) => {return (
+                                        <Text key={index}> · {category.name}</Text>
+                                    )})
                                 }
                         </Text>
                     </Text>
